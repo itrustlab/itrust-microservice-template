@@ -9,18 +9,17 @@
     <parent>
         <groupId>tz.co.itrust</groupId>
         <artifactId>itrust-dependencies-bom</artifactId>
-        <version>1.0.6</version>
+        <version>1.0.7</version>
         <relativePath/>
     </parent>
-    
-    <groupId>tz.co.itrust</groupId>
-    <artifactId>${service.artifactId}</artifactId>
+
+    <artifactId>microservice-template</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     
-    <name>${service.name}</name>
-    <description>${service.description}</description>
-    
+    <name>Microservice Template</name>
+    <description>Template for iTrust microservices</description>
+
     <!-- Distribution Management for Nexus Repository -->
     <distributionManagement>
         <repository>
@@ -41,7 +40,7 @@
         <service.description>Template for iTrust microservices</service.description>
         <service.package>tz.co.itrust.services.template</service.package>
     </properties>
-    
+
     <dependencies>
         <!-- Spring Boot Starter - Provides all common dependencies -->
         <dependency>
@@ -54,6 +53,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- H2 Database for development and testing -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version>
+            <scope>runtime</scope>
         </dependency>
         
         <!-- Example: Web API -->
