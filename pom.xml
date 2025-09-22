@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Inherit from centralized BOM -->
+    <parent>
+        <groupId>tz.co.itrust</groupId>
+        <artifactId>itrust-dependencies-bom</artifactId>
+        <version>1.0.6</version>
+        <relativePath/>
+    </parent>
+    
+    <groupId>tz.co.itrust</groupId>
+    <artifactId>${service.artifactId}</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    
+    <name>${service.name}</name>
+    <description>${service.description}</description>
+    
+    <!-- Distribution Management for Nexus Repository -->
+    <distributionManagement>
+        <repository>
+            <id>itrust-releases</id>
+            <name>iTrust Releases Repository</name>
+            <url>http://192.168.1.162:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>itrust-snapshots</id>
+            <name>iTrust Snapshots Repository</name>
+            <url>http://192.168.1.162:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+    <properties>
+        <service.artifactId>microservice-template</service.artifactId>
+        <service.name>Microservice Template</service.name>
+        <service.description>Template for iTrust microservices</service.description>
+        <service.package>tz.co.itrust.services.template</service.package>
+    </properties>
+    
+    <dependencies>
+        <!-- Spring Boot Starter - Provides all common dependencies -->
+        <dependency>
+            <groupId>tz.co.itrust</groupId>
+            <artifactId>itrust-spring-boot-starter</artifactId>
+        </dependency>
+        
+        <!-- Add service-specific dependencies here -->
+        <!-- Example: Database -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        
+        <!-- Example: Web API -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <!-- Example: Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        
+        <!-- Testing dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            
+            <!-- Maven Surefire Plugin for Tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
